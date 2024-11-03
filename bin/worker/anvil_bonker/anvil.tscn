@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://c6rou3sw4k2qr"]
+
+[ext_resource type="Texture2D" uid="uid://gprdpbf48sdj" path="res://assets/worker/annil_bonker/anvil.png" id="1_nun5y"]
+[ext_resource type="Texture2D" uid="uid://evm4eesogl3k" path="res://assets/worker/annil_bonker/anvil_particles.png" id="2_d0000"]
+[ext_resource type="Script" path="res://bin/worker/anvil_bonker/anvil_bonk_particle.gd" id="3_av315"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qeufi"]
+atlas = ExtResource("1_nun5y")
+region = Rect2(304, 0, 304, 304)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g41d5"]
+atlas = ExtResource("2_d0000")
+region = Rect2(192, 0, 64, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fp276"]
+atlas = ExtResource("2_d0000")
+region = Rect2(256, 0, 64, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqlnf"]
+atlas = ExtResource("2_d0000")
+region = Rect2(320, 0, 64, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uif5o"]
+atlas = ExtResource("2_d0000")
+region = Rect2(384, 0, 64, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocepk"]
+atlas = ExtResource("2_d0000")
+region = Rect2(448, 0, 64, 82)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_73ib0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qeufi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g41d5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fp276")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqlnf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uif5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocepk")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}]
+
+[node name="Anvil" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_nun5y")
+
+[node name="BonkParticles" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(8, -434)
+scale = Vector2(26.4141, 26.4141)
+sprite_frames = SubResource("SpriteFrames_73ib0")
+animation = &"hit"
+frame = 1
+frame_progress = 0.237602
+speed_scale = 3.0
+script = ExtResource("3_av315")
+
+[connection signal="animation_looped" from="BonkParticles" to="BonkParticles" method="_on_animation_looped"]

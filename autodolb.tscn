@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://de0ii6vj0e7x1"]
-
-[ext_resource type="Script" path="res://autodolb.gd" id="1_iykxq"]
-
-[node name="Autodolb" type="Node"]
-script = ExtResource("1_iykxq")
