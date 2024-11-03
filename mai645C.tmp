@@ -806,9 +806,6 @@ tile_map_data = PackedByteArray("AABIACgAAAAOABMAAABIACcAAAALABAAAABIACYAAAAOABM
 tile_set = SubResource("TileSet_mn2yn")
 
 [node name="Interface" parent="." instance=ExtResource("5_uewug")]
-top_level = true
-z_index = 10
-z_as_relative = false
 
 [connection signal="attack_button_pressed" from="Interface" to="." method="_on_interface_attack_button_pressed"]
 [connection signal="autodolb_button_pressed" from="Interface" to="." method="_on_interface_autodolb_button_pressed"]
