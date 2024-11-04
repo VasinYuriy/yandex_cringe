@@ -2,71 +2,119 @@
 
 [ext_resource type="Script" path="res://bin/ui/interface.gd" id="1_3ebu8"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_eegl4"]
-font_size = 24
-font_color = Color(0.0980392, 0.470588, 0.105882, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_sj330"]
 font_size = 48
 font_color = Color(0.0987666, 0.470171, 0.105083, 1)
 
-[node name="Interface" type="Button"]
+[sub_resource type="LabelSettings" id="LabelSettings_eegl4"]
+font_size = 24
+font_color = Color(0.0980392, 0.470588, 0.105882, 1)
+
+[node name="Interface" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-flat = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_3ebu8")
 
-[node name="IncomeButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 10.0
-offset_right = 101.0
-offset_bottom = 104.0
-text = "+1"
-expand_icon = true
-
-[node name="IncomeCost" type="Label" parent="IncomeButton"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 99.0
-offset_right = 93.0
-offset_bottom = 122.0
-text = "10$"
-label_settings = SubResource("LabelSettings_eegl4")
-horizontal_alignment = 1
-
 [node name="MoneyCount" type="Label" parent="."]
-layout_mode = 0
-offset_left = 921.0
-offset_top = 15.0
-offset_right = 1112.0
-offset_bottom = 40.0
-text = "0"
+layout_mode = 2
+anchor_left = 0.992
+anchor_top = 0.006
+anchor_right = 0.992
+anchor_bottom = 0.006
+offset_left = -179.784
+offset_top = 0.112
+offset_right = 0.215942
+offset_bottom = 67.112
+text = "0$"
 label_settings = SubResource("LabelSettings_sj330")
 horizontal_alignment = 2
 
-[node name="AutoBonkButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 146.0
-offset_right = 101.0
-offset_bottom = 240.0
-text = "Auto bonk"
+[node name="ScreenClicker" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+flat = true
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.094
+anchor_bottom = 0.458
+offset_right = -0.287994
+offset_bottom = 131.216
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="AddWorkerButton" type="VBoxContainer" parent="Buttons"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="Button" type="Button" parent="Buttons/AddWorkerButton"]
+clip_contents = true
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "Add worker"
 expand_icon = true
 
-[node name="AutoBonkCost" type="Label" parent="AutoBonkButton"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 99.0
-offset_right = 93.0
-offset_bottom = 122.0
+[node name="Label" type="Label" parent="Buttons/AddWorkerButton"]
+layout_mode = 2
 text = "10$"
 label_settings = SubResource("LabelSettings_eegl4")
 horizontal_alignment = 1
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
-[connection signal="pressed" from="IncomeButton" to="." method="_on_income_button_pressed"]
-[connection signal="pressed" from="AutoBonkButton" to="." method="_on_autodolb_button_pressed"]
+[node name="AddIncomeButton" type="VBoxContainer" parent="Buttons"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="Button" type="Button" parent="Buttons/AddIncomeButton"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "+1"
+expand_icon = true
+
+[node name="Label" type="Label" parent="Buttons/AddIncomeButton"]
+layout_mode = 2
+text = "10$"
+label_settings = SubResource("LabelSettings_eegl4")
+horizontal_alignment = 1
+
+[node name="AutoBonkButton" type="VBoxContainer" parent="Buttons"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="Button" type="Button" parent="Buttons/AutoBonkButton"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+text = "Auto bonk"
+expand_icon = true
+
+[node name="Label" type="Label" parent="Buttons/AutoBonkButton"]
+layout_mode = 2
+text = "10$"
+label_settings = SubResource("LabelSettings_eegl4")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="ScreenClicker" to="." method="_on_screen_clicker_pressed"]
+[connection signal="pressed" from="Buttons/AddWorkerButton/Button" to="." method="_on_add_worker_button_pressed"]
+[connection signal="pressed" from="Buttons/AddIncomeButton/Button" to="." method="_on_income_button_pressed"]
+[connection signal="pressed" from="Buttons/AutoBonkButton/Button" to="." method="_on_autodolb_button_pressed"]

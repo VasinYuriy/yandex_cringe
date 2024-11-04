@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6rou3sw4k2qr"]
+[gd_scene load_steps=12 format=3 uid="uid://c6rou3sw4k2qr"]
 
 [ext_resource type="Texture2D" uid="uid://gprdpbf48sdj" path="res://assets/worker/annil_bonker/anvil.png" id="1_nun5y"]
 [ext_resource type="Texture2D" uid="uid://evm4eesogl3k" path="res://assets/worker/annil_bonker/anvil_particles.png" id="2_d0000"]
+[ext_resource type="Script" path="res://bin/worker/anvil_bonker/anvil.gd" id="2_vnp0t"]
 [ext_resource type="Script" path="res://bin/worker/anvil_bonker/anvil_bonk_particle.gd" id="3_av315"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qeufi"]
@@ -57,6 +58,7 @@ animations = [{
 [node name="Anvil" type="Sprite2D"]
 texture_filter = 1
 texture = ExtResource("1_nun5y")
+script = ExtResource("2_vnp0t")
 
 [node name="BonkParticles" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -64,9 +66,10 @@ position = Vector2(8, -434)
 scale = Vector2(26.4141, 26.4141)
 sprite_frames = SubResource("SpriteFrames_73ib0")
 animation = &"hit"
-frame = 1
-frame_progress = 0.237602
+frame_progress = 0.0734363
 speed_scale = 3.0
 script = ExtResource("3_av315")
+
+[node name="Effects" type="Node2D" parent="."]
 
 [connection signal="animation_looped" from="BonkParticles" to="BonkParticles" method="_on_animation_looped"]
